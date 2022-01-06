@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RegistrarContratos.Entity
+namespace RegistrarContratos.Entities
 {
     class Contract
     {

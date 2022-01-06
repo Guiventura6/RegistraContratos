@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RegistrarContratos.Entity
+namespace RegistrarContratos.Entities
 {
     class Installment
     {
