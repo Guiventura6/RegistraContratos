@@ -4,28 +4,24 @@ using RegistrarContratos.Entities;
 namespace RegistrarContratos.Services
 {
     class ContractService
-    {
-        public int Month { get; set; }
-
+    {        
         private IPaymentService _paymentService;
 
         public ContractService(int month, IPaymentService paymentService)
         {
-            Month = month;
             _paymentService = paymentService;
         }
 
-        public void ProcessInstallments(Contract contract)
-        {            
-            for (int i = 1; i <= Month; i++)
+        public void ProcessContract(Contract contract, int months)
+        {
+            double basicQuota = contract.TotalValue / months;
+            for (int i = 1; i <= months; i++)
             {
-                DateTime dueDate = contract.Date.AddMonths(i);
-                double amount = (contract.TotalValue  / Month) + _paymentService.MonthlySimpleInterest(contract.TotalValue / Month) * i;
-                amount += _paymentService.PaymentFee(amount);
-
-                Installment installments = new Installment(dueDate, amount);
-
-                contract.Installments.Add(installments);
+                DateTime date = contract.Date.AddMonths(i);
+                double updateQuota = basicQuota +  _paymentService.MonthlySimpleInterest(basicQuota, i);
+                double fullQuota = updateQuota +  _paymentService.PaymentFee(updateQuota);
+                
+                contract.Installments.Add(new Installment(date, fullQuota));
             }
         }
     }

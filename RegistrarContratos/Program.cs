@@ -26,7 +26,7 @@ namespace RegistrarContratos
 
             ContractService contractService = new ContractService(months, new Paypal());
 
-            contractService.ProcessInstallments(contract);
+            contractService.ProcessContract(contract);
 
             Console.WriteLine("Installments:");
             foreach (var item in contract.Installments)
