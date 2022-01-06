@@ -7,7 +7,7 @@ namespace RegistrarContratos.Services
     {        
         private IPaymentService _paymentService;
 
-        public ContractService(int month, IPaymentService paymentService)
+        public ContractService(IPaymentService paymentService)
         {
             _paymentService = paymentService;
         }

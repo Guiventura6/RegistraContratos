@@ -18,15 +18,14 @@ namespace RegistrarContratos
             DateTime date = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CI);
             Console.Write("Contract value: ");
             double value = double.Parse(Console.ReadLine(), CI);
-
-            Contract contract = new Contract(number, date, value);
-
             Console.Write("Enter number of installments: ");
             int months = int.Parse(Console.ReadLine());
 
-            ContractService contractService = new ContractService(months, new Paypal());
+            Contract contract = new Contract(number, date, value);
 
-            contractService.ProcessContract(contract);
+            ContractService contractService = new ContractService(new Paypal());
+
+            contractService.ProcessContract(contract, months);
 
             Console.WriteLine("Installments:");
             foreach (var item in contract.Installments)
