@@ -2,12 +2,7 @@
 {
     interface IPaymentService
     {
-        public double MonthlySimpleInterest { get; set; }
-        public double PaymentFee { get; set; }
-       
-        public void ProcessInstallments()
-        {
-
-        }
+        double MonthlySimpleInterest(double amount);
+        double PaymentFee(double amount);
     }
 }
