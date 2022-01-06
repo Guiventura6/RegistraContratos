@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using System.Globalization;
 
 namespace RegistrarContratos.Entities
 {
@@ -12,5 +14,13 @@ namespace RegistrarContratos.Entities
             DueDate = dueDate;
             Amount = amount;
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"{DueDate:dd/MM/yyyy} - {Amount.ToString("F2", CultureInfo.InvariantCulture)}");
+            return sb.ToString();
+        }
+
     }
 }

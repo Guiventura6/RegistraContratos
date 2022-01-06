@@ -31,7 +31,7 @@ namespace RegistrarContratos
             Console.WriteLine("Installments:");
             foreach (var item in contract.Installments)
             {
-                Console.WriteLine(item.DueDate + " - " + item.Amount.ToString("F2", CI));
+                Console.WriteLine(item);
             }
 
         }
