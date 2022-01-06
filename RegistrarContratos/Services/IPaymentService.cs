@@ -2,7 +2,7 @@
 {
     interface IPaymentService
     {
-        double MonthlySimpleInterest(double amount);
+        double MonthlySimpleInterest(double amount, int months);
         double PaymentFee(double amount);
     }
 }
