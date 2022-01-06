@@ -1,4 +1,7 @@
-﻿namespace RegistrarContratos.Services
+﻿using System;
+using RegistrarContratos.Entities;
+
+namespace RegistrarContratos.Services
 {
     class ContractService
     {
@@ -12,9 +15,18 @@
             _paymentService = paymentService;
         }
 
-        public void ProcessInstallments()
-        {
+        public void ProcessInstallments(Contract contract)
+        {            
+            for (int i = 1; i <= Month; i++)
+            {
+                DateTime dueDate = contract.Date.AddDays(i);
+                double amount = contract.TotalValue + _paymentService.MonthlySimpleInterest(contract.TotalValue);
+                amount += _paymentService.PaymentFee(amount);
 
+                Installment installments = new Installment(dueDate, amount);
+
+                contract.Installments.Add(installments);
+            }
         }
     }
 }
