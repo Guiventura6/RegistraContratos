@@ -19,8 +19,8 @@ namespace RegistrarContratos.Services
         {            
             for (int i = 1; i <= Month; i++)
             {
-                DateTime dueDate = contract.Date.AddDays(i);
-                double amount = contract.TotalValue + _paymentService.MonthlySimpleInterest(contract.TotalValue);
+                DateTime dueDate = contract.Date.AddMonths(i);
+                double amount = (contract.TotalValue  / Month) + _paymentService.MonthlySimpleInterest(contract.TotalValue / Month) * i;
                 amount += _paymentService.PaymentFee(amount);
 
                 Installment installments = new Installment(dueDate, amount);

@@ -11,7 +11,7 @@ namespace RegistrarContratos
         {
             CultureInfo CI = CultureInfo.InvariantCulture;
   
-            Console.WriteLine(" Enter contract data");
+            Console.WriteLine("Enter contract data");
             Console.Write("Number: ");
             int number = int.Parse(Console.ReadLine());
             Console.Write("Date (dd/MM/yyyy): ");

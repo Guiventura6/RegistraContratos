@@ -4,12 +4,12 @@
     {
         public double MonthlySimpleInterest(double amount)
         {
-            return amount * 0.1;
+            return amount * 0.01;
         }
 
         public double PaymentFee(double amount)
         {
-            return amount * 0.2;
+            return amount * 0.02;
         }
     }
 }
