@@ -2,14 +2,17 @@
 {
     class Paypal : IPaymentService
     {
-        public double MonthlySimpleInterest(double amount)
+        private const double FeePercentage = 0.02;
+        private const double MonthlyInterest = 0.01;
+
+        public double MonthlySimpleInterest(double amount, int months)
         {
-            return amount * 0.01;
+            return amount * MonthlyInterest * months;
         }
 
         public double PaymentFee(double amount)
         {
-            return amount * 0.02;
+            return amount * FeePercentage;
         }
     }
 }
